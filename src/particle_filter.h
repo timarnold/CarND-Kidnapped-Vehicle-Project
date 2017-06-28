@@ -10,9 +10,9 @@
 #define PARTICLE_FILTER_H_
 
 #include "helper_functions.h"
+#include <random>
 
 struct Particle {
-
 	int id;
 	double x;
 	double y;
@@ -23,14 +23,9 @@ struct Particle {
 	std::vector<double> sense_y;
 };
 
-
-
 class ParticleFilter {
-	
 	// Number of particles to draw
 	int num_particles; 
-	
-	
 	
 	// Flag, if filter is initialized
 	bool is_initialized;
@@ -114,8 +109,10 @@ public:
 	const bool initialized() const {
 		return is_initialized;
 	}
+
+private:
+	std::default_random_engine gen_;
+
 };
-
-
 
 #endif /* PARTICLE_FILTER_H_ */
